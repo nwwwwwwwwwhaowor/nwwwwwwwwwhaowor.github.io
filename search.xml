@@ -1,33 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>MIMO信息论</title>
-    <url>/2024/04/03/MIMO%E4%BF%A1%E6%81%AF%E8%AE%BA/</url>
-    <content><![CDATA[<p>#大家好，这是</p>
-]]></content>
+    <title>信息论的升维之路——多天线技术（一）</title>
+    <url>/2024/04/01/MIMO%E5%A4%9A%E7%BB%B4/</url>
+    <content><![CDATA[<p>多天线技术，准确地说应该称为多通道技术，就是只研究信道，而不是天线本身。但是既然要大范围应用，就应该理论和实际相结合，像Openai的大模型，设计出模型，做出面向公众的产品，然后惊艳世界。</p>
+<h2 id="MIMO信息论"><a href="#MIMO信息论" class="headerlink" title="MIMO信息论"></a>MIMO信息论</h2><h3 id="MIMO系统"><a href="#MIMO系统" class="headerlink" title="MIMO系统"></a>MIMO系统</h3><p>一个<strong>AWGN</strong>信道的信道模型为:</p>
+<p>$$<br>r&#x3D;s+n<br>$$</p>
+<p>其中，<strong>r</strong>是接收信号，<strong>s</strong>是发射信号，<strong>n</strong>是白噪声。</p>
+<p>信息论告诉我们它的容量为：<br>$$<br>C&#x3D;B \log_{2}({1+}\frac{\sigma_s^2}{\sigma_n^2})<br>$$<br>其中<strong>C</strong>是信道容量，<strong>B</strong>是带宽，分子是信号功率，分母是白噪声功率。拓展一下，增益为<strong>h</strong>的平坦衰落信道模型为：<br>$$<br>r&#x3D;hs+n<br>$$<br>把这个模型继续拓展为多输入多输出的形式：<br>$$<br>r&#x3D;Hs+n<br>$$<br>其中,<br>$$<br>r&#x3D;<br>    \left(\begin{matrix}<br>    r_1 \<br>    r_2 \<br>    r_3\<br>    \end{matrix}\right)<br>$$</p>
+<p>$$<br>H&#x3D;\left(\begin{matrix}<br>        h_{11}  &amp; \cdots &amp; h_{m1}\<br>        \vdots &amp; \ddots &amp; \vdots \<br>        h_{1n}  &amp; \cdots &amp; h_{mn}\<br>    \end{matrix}\right)<br>$$</p>
+<p><strong>s</strong>,<strong>h</strong>均为矢量。</p>
+<p>这个模型相当于<strong>m</strong>根发射天线,<strong>n</strong>跟接收天线组成的多天线系统。</p>
+<p>从一维拓展到高维，信道容量变为：<br>$$<br>C&#x3D;Blog_{2}det({I_n+HR_{ss}H^HR_{nn}^{-1})}<br>$$<br>行列式可以看成有向面积或体积，那么从粗略的概念上去理解，就是每个维度边长的乘积，取对数后转换为求和。也就是说，每个维度可看作一个信道，都有一定的信道容量，总的信道容量是每个维度信道容量的和。（未完待续…）</p>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3>]]></content>
       <tags>
-        <tag>信息论</tag>
+        <tag>mimo</tag>
       </tags>
   </entry>
   <entry>
-    <title>信息论的升维之路——5G核心技术</title>
-    <url>/2024/04/01/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
+    <title>MIMO信息论</title>
+    <url>/2024/04/03/MIMO%E4%BF%A1%E6%81%AF%E8%AE%BA/</url>
+    <content><![CDATA[]]></content>
       <tags>
-        <tag>mimo</tag>
+        <tag>信息论</tag>
       </tags>
   </entry>
 </search>
