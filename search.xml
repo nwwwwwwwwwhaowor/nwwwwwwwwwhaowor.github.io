@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>MIMO信息论</title>
+    <title>MIMO信息论——（二）</title>
     <url>/2024/04/03/MIMO%E4%BF%A1%E6%81%AF%E8%AE%BA/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h2 id="利用-SVD解读MIMO"><a href="#利用-SVD解读MIMO" class="headerlink" title="利用 SVD解读MIMO"></a>利用 SVD解读MIMO</h2><p>奇异值分解是分析矩阵的一个强大工具，强大的原因是因为任何一个矩阵<strong>H</strong>，不管是长的还是方的，也不管是实数还是负数，只要是矩阵都可以分解为如下形式：<br>$$<br>H&#x3D;U\sum V^H<br>$$<br>其中, $\sum$ 为对角矩阵，对角线上的元素是非负实数，一般按照从大到小的顺序排列。$U$、$V$ 是酋矩阵，即复数正交方阵，满足<br>$$<br>UU^H&#x3D;U^HU&#x3D;I_n,VV^H&#x3D;V^HV&#x3D;I_m<br>$$<br> 这里要注意各个矩阵的维数。如果$\sum$ 是方阵，那么对角矩阵就没有什么歧义。但是这个矩阵往往不是方阵，那么如何形成对角阵呢？其实就是在一个对角方阵的行或者列的方向上补零。如果$n&lt;m$</p>
+<p>,那么<br>$$<br>\sum &#x3D;\begin{matrix}<br>    \lambda_1&amp; 0 &amp; 0 &amp;0&amp;0&amp;0\<br>    0 &amp; \lambda_2 &amp; 0&amp;0&amp;0&amp;0\<br>    0 &amp; 0 &amp; \lambda_3&amp; 0&amp;0&amp;0\<br>    \end{matrix}<br>$$<br>矩阵$\sum$ 对角线上的值 叫做矩阵的奇异值，它是非负实数，对负数矩阵也是如此。</p>
+<p>信道矩阵$H$可以进行$SVD$ ,那么有：<br>$$<br>r&#x3D;Hs+n&#x3D;U\sum V^Hs+n<br>$$<br> 如果发射机知道信道矩阵，就可以得到它的$SVD$ ，并用$V$ 对一个要发送的信息$s’$ 进行编码，得到每个天线的发射信号$s$ :<br>$$<br>s&#x3D;Vs’<br>$$<br>这样一来，就有<br>$$<br>r&#x3D;U\sum V^HVs’+n&#x3D;U\sum s’+n<br>$$<br>因为$V$ 是正交阵，所以对消掉了。如果接收机也知道信道矩阵，在收到信号后等式两边左乘$U^H$ </p>
+<p>得到：<br>$$<br>r’&#x3D;\sum s’+n’<br>$$<br>这意味着，经过变换后的$MIMO$ 系统等价于多个互不干扰的并行信道：<br>$$<br>r_{i}&#x3D;\lambda_is{<em>i}+n</em>{i},i&#x3D;1,2,..,min(m,n)<br>$$</p>
+]]></content>
       <tags>
         <tag>信息论</tag>
       </tags>
