@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>MIMO多天线技术——（三）</title>
+    <url>/2024/04/08/MIMO%E4%BF%A1%E6%81%AF%E8%AE%BA2/</url>
+    <content><![CDATA[<h2 id="补充知识"><a href="#补充知识" class="headerlink" title="补充知识"></a>补充知识</h2><p><em>注水定理</em></p>
+<p>一个AWGN（加性高斯白噪声）信道$Y&#x3D;X+Z$</p>
+<p>其中，$X$是输入信号，$Z$是白噪声，$Y$是输出信号，信道容量根据香农公式计算$C&#x3D;log_ {2} {1+\frac{P}{N}}$</p>
+<p>如果信号的功率改为;$P&#x3D;P_1+P_2$ ,可以到的一个公式：</p>
+]]></content>
+      <tags>
+        <tag>信息论</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MIMO信息论——（二）</title>
     <url>/2024/04/03/MIMO%E4%BF%A1%E6%81%AF%E8%AE%BA/</url>
     <content><![CDATA[<h2 id="利用-SVD解读MIMO"><a href="#利用-SVD解读MIMO" class="headerlink" title="利用 SVD解读MIMO"></a>利用 SVD解读MIMO</h2><p>奇异值分解是分析矩阵的一个强大工具，强大的原因是因为任何一个矩阵<strong>H</strong>，不管是长的还是方的，也不管是实数还是负数，只要是矩阵都可以分解为如下形式：<br>$$<br>H&#x3D;U\sum V^H<br>$$<br>其中, $\sum$ 为对角矩阵，对角线上的元素是非负实数，一般按照从大到小的顺序排列。$U$、$V$ 是酋矩阵，即复数正交方阵，满足<br>$$<br>UU^H&#x3D;U^HU&#x3D;I_n,VV^H&#x3D;V^HV&#x3D;I_m<br>$$<br> 这里要注意各个矩阵的维数。如果$\sum$ 是方阵，那么对角矩阵就没有什么歧义。但是这个矩阵往往不是方阵，那么如何形成对角阵呢？其实就是在一个对角方阵的行或者列的方向上补零。如果$n&lt;m$</p>
@@ -12,8 +24,7 @@ $$
 r_{i}=\lambda_is{_i}+n_{i},i=1,2,..,min(m,n)
 $$
 </div>
-
-
+## 未完待续
 ]]></content>
       <tags>
         <tag>信息论</tag>
