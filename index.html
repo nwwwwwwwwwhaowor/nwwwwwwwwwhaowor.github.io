@@ -202,10 +202,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2024-04-08 15:24:43 / 修改时间：15:41:47" itemprop="dateCreated datePublished" datetime="2024-04-08T15:24:43+08:00">2024-04-08</time>
+              <time title="创建时间：2024-04-08 15:24:43" itemprop="dateCreated datePublished" datetime="2024-04-08T15:24:43+08:00">2024-04-08</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-04-12 15:44:07" itemprop="dateModified" datetime="2024-04-12T15:44:07+08:00">2024-04-12</time>
+              </span>
 
           <br>
             <span class="post-meta-item" title="本文字数">
@@ -213,7 +219,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>145</span>
+              <span>456</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -236,6 +242,9 @@
 <p>一个AWGN（加性高斯白噪声）信道$Y&#x3D;X+Z$</p>
 <p>其中，$X$是输入信号，$Z$是白噪声，$Y$是输出信号，信道容量根据香农公式计算$C&#x3D;log_ {2} {1+\frac{P}{N}}$</p>
 <p>如果信号的功率改为;$P&#x3D;P_1+P_2$ ,可以到的一个公式：</p>
+<p>$$<br>C&#x3D;log_ {2} {1+\frac{P_1+P_2}{N}}&#x3D;log_{2} ({1+\frac{P_1}{N}} )+log_{2} ({1+\frac{P_2}{P_1+N}} )&#x3D;C_1+C_2<br>$$<br>$C_1log_{2} ({1+\frac{P_1}{N}} )$ 可以理解为信号功率为$P_1$ ,噪声为$N$ 时的容量；$C_2 $ 可以理解为信号功率为$P_2$ ,噪声为$P_1+N $ 时的容量。</p>
+<p>也就是说，这两份功率，第一份功率产生了一个容量，同时等效成了对第二份功率的噪声。</p>
+<p>已经存在的功率，无论是噪声还是信号，对后来的信号来说都是噪声。因此没把这一小份功率分配到累计功率最小的信道上获得的容量最大。</p>
 
       
     </div>
