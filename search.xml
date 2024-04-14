@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>信息论的升维之路——多天线技术（一）</title>
+    <url>/2024/04/01/MIMO%E5%A4%9A%E7%BB%B4/</url>
+    <content><![CDATA[<p>多天线技术，准确地说应该称为多通道技术，就是只研究信道，而不是天线本身。但是既然要大范围应用，就应该理论和实际相结合，像Openai的大模型，设计出模型，做出面向公众的产品，然后惊艳世界。</p>
+<h2 id="MIMO信息论"><a href="#MIMO信息论" class="headerlink" title="MIMO信息论"></a>MIMO信息论</h2><h3 id="MIMO系统"><a href="#MIMO系统" class="headerlink" title="MIMO系统"></a>MIMO系统</h3><p>一个<strong>AWGN</strong>信道的信道模型为:</p>
+<p>$$<br>r&#x3D;s+n<br>$$</p>
+<p>其中，<strong>r</strong>是接收信号，<strong>s</strong>是发射信号，<strong>n</strong>是白噪声。</p>
+<p>信息论告诉我们它的容量为：<br>$$<br>C&#x3D;B \log_{2}({1+}\frac{\sigma_s^2}{\sigma_n^2})<br>$$<br>其中<strong>C</strong>是信道容量，<strong>B</strong>是带宽，分子是信号功率，分母是白噪声功率。拓展一下，增益为<strong>h</strong>的平坦衰落信道模型为：<br>$$<br>r&#x3D;hs+n<br>$$<br>把这个模型继续拓展为多输入多输出的形式：<br>$$<br>r&#x3D;Hs+n<br>$$<br>其中,<br>$$<br>r&#x3D;<br>    \left(\begin{matrix}<br>    r_1 \<br>    r_2 \<br>    r_3\<br>    \end{matrix}\right)<br>$$</p>
+<p>$$<br>H&#x3D;\left(\begin{matrix}<br>        h_{11}  &amp; \cdots &amp; h_{m1}\<br>        \vdots &amp; \ddots &amp; \vdots \<br>        h_{1n}  &amp; \cdots &amp; h_{mn}\<br>    \end{matrix}\right)<br>$$</p>
+<p><strong>s</strong>,<strong>h</strong>均为矢量。</p>
+<p>这个模型相当于<strong>m</strong>根发射天线,<strong>n</strong>跟接收天线组成的多天线系统。</p>
+<p>从一维拓展到高维，信道容量变为：<br>$$<br>C&#x3D;Blog_{2}det({I_n+HR_{ss}H^HR_{nn}^{-1})}<br>$$<br>行列式可以看成有向面积或体积，那么从粗略的概念上去理解，就是每个维度边长的乘积，取对数后转换为求和。也就是说，每个维度可看作一个信道，都有一定的信道容量，总的信道容量是每个维度信道容量的和。（未完待续…）</p>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3>]]></content>
+      <tags>
+        <tag>mimo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MIMO信息论——（二）</title>
     <url>/2024/04/03/MIMO%E4%BF%A1%E6%81%AF%E8%AE%BA/</url>
     <content><![CDATA[<h2 id="利用-SVD解读MIMO"><a href="#利用-SVD解读MIMO" class="headerlink" title="利用 SVD解读MIMO"></a>利用 SVD解读MIMO</h2><p>奇异值分解是分析矩阵的一个强大工具，强大的原因是因为任何一个矩阵<strong>H</strong>，不管是长的还是方的，也不管是实数还是负数，只要是矩阵都可以分解为如下形式：<br>$$<br>H&#x3D;U\sum V^H<br>$$<br>其中, $\sum$ 为对角矩阵，对角线上的元素是非负实数，一般按照从大到小的顺序排列。$U$、$V$ 是酋矩阵，即复数正交方阵，满足<br>$$<br>UU^H&#x3D;U^HU&#x3D;I_n,VV^H&#x3D;V^HV&#x3D;I_m<br>$$<br> 这里要注意各个矩阵的维数。如果$\sum$ 是方阵，那么对角矩阵就没有什么歧义。但是这个矩阵往往不是方阵，那么如何形成对角阵呢？其实就是在一个对角方阵的行或者列的方向上补零。如果$n&lt;m$</p>
@@ -19,6 +36,22 @@ $$
       </tags>
   </entry>
   <entry>
+    <title>爬山问题</title>
+    <url>/2024/04/14/%E7%88%AC%E5%B1%B1%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h2 id="周五导学课小随笔"><a href="#周五导学课小随笔" class="headerlink" title="##周五导学课小随笔"></a>##周五导学课小随笔</h2><p><strong>贪心算法</strong></p>
+<p>贪心算法是一种基础的优化算法，但是容易陷入局部最优的问题，如果唐僧用贪婪算法爬五指山去救大圣，估计西游记的主角就会换成猪八戒了。（笑话很冷呢）</p>
+<p><strong>遗传算法</strong></p>
+<p>遗传算法是模拟染色体重组的一种算法，通过优胜劣汰来选择最优解。求解效果的差的组合会被排除，然后不断迭代。其中染色体还会依据一定概率变异再参与组合。这种算法可以避免局部最优的问题，因为种群中可能会有组合到达更高的山峰，防止在一个小山峰停滞不前。</p>
+<p><strong>模拟退火算法</strong></p>
+<p>很经典的算法，加温过程相当于对算法设定初值，等温过程对应算法的Metropolis抽样过程，冷却过程对应控制参数的下降。这里能量的变化就是目标函数，我们要得到的最优解就是能量最低态。</p>
+<p><strong>随机森林</strong></p>
+<p>随机森岭是一群决策器共同作用来找到最优的决策，但是准确的说，这是一种分类问题，不是最优化，虽然二者最终都可以解决优化问题。随机森林最终确定是决策范围，最优化算法是寻找确切的解。当然，随机森林由于可以使用多个决策器，防止了单一决策器使用贪心算法以至于局部最优的问题</p>
+]]></content>
+      <tags>
+        <tag>AI</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MIMO多天线技术——（三）</title>
     <url>/2024/04/08/MIMO%E4%BF%A1%E6%81%AF%E8%AE%BA2/</url>
     <content><![CDATA[<h2 id="补充知识"><a href="#补充知识" class="headerlink" title="补充知识"></a>补充知识</h2><p><em>注水定理</em></p>
@@ -31,23 +64,6 @@ $$
 ]]></content>
       <tags>
         <tag>信息论</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>信息论的升维之路——多天线技术（一）</title>
-    <url>/2024/04/01/MIMO%E5%A4%9A%E7%BB%B4/</url>
-    <content><![CDATA[<p>多天线技术，准确地说应该称为多通道技术，就是只研究信道，而不是天线本身。但是既然要大范围应用，就应该理论和实际相结合，像Openai的大模型，设计出模型，做出面向公众的产品，然后惊艳世界。</p>
-<h2 id="MIMO信息论"><a href="#MIMO信息论" class="headerlink" title="MIMO信息论"></a>MIMO信息论</h2><h3 id="MIMO系统"><a href="#MIMO系统" class="headerlink" title="MIMO系统"></a>MIMO系统</h3><p>一个<strong>AWGN</strong>信道的信道模型为:</p>
-<p>$$<br>r&#x3D;s+n<br>$$</p>
-<p>其中，<strong>r</strong>是接收信号，<strong>s</strong>是发射信号，<strong>n</strong>是白噪声。</p>
-<p>信息论告诉我们它的容量为：<br>$$<br>C&#x3D;B \log_{2}({1+}\frac{\sigma_s^2}{\sigma_n^2})<br>$$<br>其中<strong>C</strong>是信道容量，<strong>B</strong>是带宽，分子是信号功率，分母是白噪声功率。拓展一下，增益为<strong>h</strong>的平坦衰落信道模型为：<br>$$<br>r&#x3D;hs+n<br>$$<br>把这个模型继续拓展为多输入多输出的形式：<br>$$<br>r&#x3D;Hs+n<br>$$<br>其中,<br>$$<br>r&#x3D;<br>    \left(\begin{matrix}<br>    r_1 \<br>    r_2 \<br>    r_3\<br>    \end{matrix}\right)<br>$$</p>
-<p>$$<br>H&#x3D;\left(\begin{matrix}<br>        h_{11}  &amp; \cdots &amp; h_{m1}\<br>        \vdots &amp; \ddots &amp; \vdots \<br>        h_{1n}  &amp; \cdots &amp; h_{mn}\<br>    \end{matrix}\right)<br>$$</p>
-<p><strong>s</strong>,<strong>h</strong>均为矢量。</p>
-<p>这个模型相当于<strong>m</strong>根发射天线,<strong>n</strong>跟接收天线组成的多天线系统。</p>
-<p>从一维拓展到高维，信道容量变为：<br>$$<br>C&#x3D;Blog_{2}det({I_n+HR_{ss}H^HR_{nn}^{-1})}<br>$$<br>行列式可以看成有向面积或体积，那么从粗略的概念上去理解，就是每个维度边长的乘积，取对数后转换为求和。也就是说，每个维度可看作一个信道，都有一定的信道容量，总的信道容量是每个维度信道容量的和。（未完待续…）</p>
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3>]]></content>
-      <tags>
-        <tag>mimo</tag>
       </tags>
   </entry>
 </search>
