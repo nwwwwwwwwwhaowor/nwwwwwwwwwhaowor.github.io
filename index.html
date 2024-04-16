@@ -179,6 +179,79 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/16/MIMO%E5%8A%9F%E7%8E%87%E5%88%86%E9%85%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/m3.png">
+      <meta itemprop="name" content="James Li">
+      <meta itemprop="description" content="正在努力的EE学生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="James Li">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/04/16/MIMO%E5%8A%9F%E7%8E%87%E5%88%86%E9%85%8D/" class="post-title-link" itemprop="url">MIMO多天线技术——（四）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-04-16 14:02:42 / 修改时间：14:44:38" itemprop="dateCreated datePublished" datetime="2024-04-16T14:02:42+08:00">2024-04-16</time>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>989</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="系统容量"><a href="#系统容量" class="headerlink" title="系统容量"></a>系统容量</h2><p>书接上回，我们讨论到MIMO系统等价于多个互不干扰的并行信道。得到系统容量为：<br>$$<br>C&#x3D;B\sum\limits_{i&#x3D;1}^{min(m,n)}\log_{2}{(1+\frac{\lambda_i^2\sigma_{s_i’}^2}{\sigma_{n}^2})}<br>$$<br>酋矩阵不引起信号和噪声功率的变化。，如果所有的信道分配到功率相等，则把$H&#x3D;U\sum V_H$ 直接带入MIMO容量公式：<br>$$<br>C&#x3D;B\log det(I_n+\frac{\sigma_s^2}{\sigma_n^2}HH_H)<br>$$<br>得到：<br>$$<br>C&#x3D;B\log det(I_n+\frac{\sigma_s^2}{\sigma_n^2}U\sum\sum^HU^H) \&#x3D;B\log det(U(I_n+\frac{\sigma_s^2}{\sigma_n^2}\sum\sum^H)U^H)\&#x3D;B\log (detUdet   (I_n+\frac{\sigma_s^2}{\sigma_n^2}\sum\sum^H)detU^H)\&#x3D;B\log (det   (I_n+\frac{\sigma_s^2}{\sigma_n^2}\sum\sum^H))\&#x3D;B\sum\limits_{i&#x3D;1}^{min(m,n)}\log_{2}(1+\frac{\lambda_i^2\sigma_{s}^2}{\sigma_n^2})<br>$$<br>也就是说，在等功率分配的情况下，两种MIMO信道容量的表达方式是相同的。MIMO系统可以等效为若干个互不干扰的并行信道，如果不限制每个信道的功率相等，可以获得更高的信道容量。并行信道可以根据注水原理进行最优功率分配，实现系统容量的最大化。在这里，注水定理改为：<br>$$<br>r_i’&#x2F;\lambda_i&#x3D;s_i’+n_i’&#x2F;\lambda_i,i&#x3D;1,2,…,min(n,m)<br>$$<br>去掉系数$\lambda_i$ 后信道就是AWGN了，可以直接用注水功率分配。注水功率分配的原则是每个AWGN信道上的累计功率相等，结果是$n_i’&#x2F;\lambda_i$ 越小的信道分配的功率越多。采用注水功率分配后的容量要大于上面提到的等功率分配的容量。:smiley:<br>$$<br>End<br>$$</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/14/%E7%88%AC%E5%B1%B1%E9%97%AE%E9%A2%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -583,7 +656,7 @@ $$
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -637,12 +710,12 @@ $$
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">2k</span>
+    <span title="站点总字数">3k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2 分钟</span>
+    <span title="站点阅读时长">3 分钟</span>
 </div>
   <div class="powered-by">
     <!--由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动-->
