@@ -1,41 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>MIMO信息论——（二）</title>
-    <url>/2024/04/03/MIMO%E4%BF%A1%E6%81%AF%E8%AE%BA/</url>
-    <content><![CDATA[<h2 id="利用-SVD解读MIMO"><a href="#利用-SVD解读MIMO" class="headerlink" title="利用 SVD解读MIMO"></a>利用 SVD解读MIMO</h2><p>奇异值分解是分析矩阵的一个强大工具，强大的原因是因为任何一个矩阵<strong>H</strong>，不管是长的还是方的，也不管是实数还是负数，只要是矩阵都可以分解为如下形式：<br>$$<br>H&#x3D;U\sum V^H<br>$$<br>其中, $\sum$ 为对角矩阵，对角线上的元素是非负实数，一般按照从大到小的顺序排列。$U$、$V$ 是酋矩阵，即复数正交方阵，满足<br>$$<br>UU^H&#x3D;U^HU&#x3D;I_n,VV^H&#x3D;V^HV&#x3D;I_m<br>$$<br> 这里要注意各个矩阵的维数。如果$\sum$ 是方阵，那么对角矩阵就没有什么歧义。但是这个矩阵往往不是方阵，那么如何形成对角阵呢？其实就是在一个对角方阵的行或者列的方向上补零。如果$n&lt;m$</p>
-<p>,那么<br>$$<br>\sum &#x3D;\begin{matrix}<br>    \lambda_1&amp; 0 &amp; 0 &amp;0&amp;0&amp;0\<br>    0 &amp; \lambda_2 &amp; 0&amp;0&amp;0&amp;0\<br>    0 &amp; 0 &amp; \lambda_3&amp; 0&amp;0&amp;0\<br>    \end{matrix}<br>$$<br>矩阵$\sum$ 对角线上的值 叫做矩阵的奇异值，它是非负实数，对负数矩阵也是如此。</p>
-<p>信道矩阵$H$可以进行$SVD$ ,那么有：<br>$$<br>r&#x3D;Hs+n&#x3D;U\sum V^Hs+n<br>$$<br> 如果发射机知道信道矩阵，就可以得到它的$SVD$ ，并用$V$ 对一个要发送的信息$s’$ 进行编码，得到每个天线的发射信号$s$ :<br>$$<br>s&#x3D;Vs’<br>$$<br>这样一来，就有<br>$$<br>r&#x3D;U\sum V^HVs’+n&#x3D;U\sum s’+n<br>$$<br>因为$V$ 是正交阵，所以对消掉了。如果接收机也知道信道矩阵，在收到信号后等式两边左乘$U^H$ </p>
-<p>得到：<br>$$<br>r’&#x3D;\sum s’+n’<br>$$<br>这意味着，经过变换后的$MIMO$ 系统等价于多个互不干扰的并行信道：</p>
-<div>
-$$
-r_{i}=\lambda_is{_i}+n_{i},i=1,2,..,min(m,n)
-$$
-</div>
-## 未完待续
-]]></content>
-      <tags>
-        <tag>信息论</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>信息论的升维之路——多天线技术（一）</title>
-    <url>/2024/04/01/MIMO%E5%A4%9A%E7%BB%B4/</url>
-    <content><![CDATA[<p>多天线技术，准确地说应该称为多通道技术，就是只研究信道，而不是天线本身。但是既然要大范围应用，就应该理论和实际相结合，像Openai的大模型，设计出模型，做出面向公众的产品，然后惊艳世界。</p>
-<h2 id="MIMO信息论"><a href="#MIMO信息论" class="headerlink" title="MIMO信息论"></a>MIMO信息论</h2><h3 id="MIMO系统"><a href="#MIMO系统" class="headerlink" title="MIMO系统"></a>MIMO系统</h3><p>一个<strong>AWGN</strong>信道的信道模型为:</p>
-<p>$$<br>r&#x3D;s+n<br>$$</p>
-<p>其中，<strong>r</strong>是接收信号，<strong>s</strong>是发射信号，<strong>n</strong>是白噪声。</p>
-<p>信息论告诉我们它的容量为：<br>$$<br>C&#x3D;B \log_{2}({1+}\frac{\sigma_s^2}{\sigma_n^2})<br>$$<br>其中<strong>C</strong>是信道容量，<strong>B</strong>是带宽，分子是信号功率，分母是白噪声功率。拓展一下，增益为<strong>h</strong>的平坦衰落信道模型为：<br>$$<br>r&#x3D;hs+n<br>$$<br>把这个模型继续拓展为多输入多输出的形式：<br>$$<br>r&#x3D;Hs+n<br>$$<br>其中,<br>$$<br>r&#x3D;<br>    \left(\begin{matrix}<br>    r_1 \<br>    r_2 \<br>    r_3\<br>    \end{matrix}\right)<br>$$</p>
-<p>$$<br>H&#x3D;\left(\begin{matrix}<br>        h_{11}  &amp; \cdots &amp; h_{m1}\<br>        \vdots &amp; \ddots &amp; \vdots \<br>        h_{1n}  &amp; \cdots &amp; h_{mn}\<br>    \end{matrix}\right)<br>$$</p>
-<p><strong>s</strong>,<strong>h</strong>均为矢量。</p>
-<p>这个模型相当于<strong>m</strong>根发射天线,<strong>n</strong>跟接收天线组成的多天线系统。</p>
-<p>从一维拓展到高维，信道容量变为：<br>$$<br>C&#x3D;Blog_{2}det({I_n+HR_{ss}H^HR_{nn}^{-1})}<br>$$<br>行列式可以看成有向面积或体积，那么从粗略的概念上去理解，就是每个维度边长的乘积，取对数后转换为求和。也就是说，每个维度可看作一个信道，都有一定的信道容量，总的信道容量是每个维度信道容量的和。（未完待续…）</p>
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3>]]></content>
-      <tags>
-        <tag>mimo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>MIMO多天线技术——（四）</title>
     <url>/2024/04/16/MIMO%E5%8A%9F%E7%8E%87%E5%88%86%E9%85%8D/</url>
     <content><![CDATA[<h2 id="系统容量"><a href="#系统容量" class="headerlink" title="系统容量"></a>系统容量</h2><p>书接上回，我们讨论到MIMO系统等价于多个互不干扰的并行信道。得到系统容量为：<br>$$<br>C&#x3D;B\sum\limits_{i&#x3D;1}^{min(m,n)}\log_{2}{(1+\frac{\lambda_i^2\sigma_{s_i’}^2}{\sigma_{n}^2})}<br>$$<br>酋矩阵不引起信号和噪声功率的变化。，如果所有的信道分配到功率相等，则把$H&#x3D;U\sum V_H$ 直接带入MIMO容量公式：<br>$$<br>C&#x3D;B\log det(I_n+\frac{\sigma_s^2}{\sigma_n^2}HH_H)<br>$$<br>得到：<br>$$<br>C&#x3D;B\log det(I_n+\frac{\sigma_s^2}{\sigma_n^2}U\sum\sum^HU^H) \&#x3D;B\log det(U(I_n+\frac{\sigma_s^2}{\sigma_n^2}\sum\sum^H)U^H)\&#x3D;B\log (detUdet   (I_n+\frac{\sigma_s^2}{\sigma_n^2}\sum\sum^H)detU^H)\&#x3D;B\log (det   (I_n+\frac{\sigma_s^2}{\sigma_n^2}\sum\sum^H))\&#x3D;B\sum\limits_{i&#x3D;1}^{min(m,n)}\log_{2}(1+\frac{\lambda_i^2\sigma_{s}^2}{\sigma_n^2})<br>$$<br>也就是说，在等功率分配的情况下，两种MIMO信道容量的表达方式是相同的。MIMO系统可以等效为若干个互不干扰的并行信道，如果不限制每个信道的功率相等，可以获得更高的信道容量。并行信道可以根据注水原理进行最优功率分配，实现系统容量的最大化。在这里，注水定理改为：<br>$$<br>r_i’&#x2F;\lambda_i&#x3D;s_i’+n_i’&#x2F;\lambda_i,i&#x3D;1,2,…,min(n,m)<br>$$<br>去掉系数$\lambda_i$ 后信道就是AWGN了，可以直接用注水功率分配。注水功率分配的原则是每个AWGN信道上的累计功率相等，结果是$n_i’&#x2F;\lambda_i$ 越小的信道分配的功率越多。采用注水功率分配后的容量要大于上面提到的等功率分配的容量。:smiley:<br>$$<br>End<br>$$</p>
@@ -60,6 +25,24 @@ $$
       </tags>
   </entry>
   <entry>
+    <title>MIMO信息论——（二）</title>
+    <url>/2024/04/03/MIMO%E4%BF%A1%E6%81%AF%E8%AE%BA/</url>
+    <content><![CDATA[<h2 id="利用-SVD解读MIMO"><a href="#利用-SVD解读MIMO" class="headerlink" title="利用 SVD解读MIMO"></a>利用 SVD解读MIMO</h2><p>奇异值分解是分析矩阵的一个强大工具，强大的原因是因为任何一个矩阵<strong>H</strong>，不管是长的还是方的，也不管是实数还是负数，只要是矩阵都可以分解为如下形式：<br>$$<br>H&#x3D;U\sum V^H<br>$$<br>其中, $\sum$ 为对角矩阵，对角线上的元素是非负实数，一般按照从大到小的顺序排列。$U$、$V$ 是酋矩阵，即复数正交方阵，满足<br>$$<br>UU^H&#x3D;U^HU&#x3D;I_n,VV^H&#x3D;V^HV&#x3D;I_m<br>$$<br> 这里要注意各个矩阵的维数。如果$\sum$ 是方阵，那么对角矩阵就没有什么歧义。但是这个矩阵往往不是方阵，那么如何形成对角阵呢？其实就是在一个对角方阵的行或者列的方向上补零。如果$n&lt;m$</p>
+<p>,那么<br>$$<br>\sum &#x3D;\begin{matrix}<br>    \lambda_1&amp; 0 &amp; 0 &amp;0&amp;0&amp;0\<br>    0 &amp; \lambda_2 &amp; 0&amp;0&amp;0&amp;0\<br>    0 &amp; 0 &amp; \lambda_3&amp; 0&amp;0&amp;0\<br>    \end{matrix}<br>$$<br>矩阵$\sum$ 对角线上的值 叫做矩阵的奇异值，它是非负实数，对负数矩阵也是如此。</p>
+<p>信道矩阵$H$可以进行$SVD$ ,那么有：<br>$$<br>r&#x3D;Hs+n&#x3D;U\sum V^Hs+n<br>$$<br> 如果发射机知道信道矩阵，就可以得到它的$SVD$ ，并用$V$ 对一个要发送的信息$s’$ 进行编码，得到每个天线的发射信号$s$ :<br>$$<br>s&#x3D;Vs’<br>$$<br>这样一来，就有<br>$$<br>r&#x3D;U\sum V^HVs’+n&#x3D;U\sum s’+n<br>$$<br>因为$V$ 是正交阵，所以对消掉了。如果接收机也知道信道矩阵，在收到信号后等式两边左乘$U^H$ </p>
+<p>得到：<br>$$<br>r’&#x3D;\sum s’+n’<br>$$<br>这意味着，经过变换后的$MIMO$ 系统等价于多个互不干扰的并行信道：</p>
+<div>
+$$
+r_{i}=\lambda_is{_i}+n_{i},i=1,2,..,min(m,n)
+$$
+</div>
+## 未完待续
+]]></content>
+      <tags>
+        <tag>信息论</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>各种学习怎么分？</title>
     <url>/2024/04/17/%E5%90%84%E7%A7%8D%E5%AD%A6%E4%B9%A0%E6%80%8E%E4%B9%88%E5%88%86%EF%BC%9F/</url>
     <content><![CDATA[<h2 id="机器学习"><a href="#机器学习" class="headerlink" title="机器学习"></a>机器学习</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph LR;</span><br><span class="line">    A0(Data)--手动操作--&gt;B0(Feature)--&gt;C0(Model)--&gt;D0(Predicton)--训练不断迭代--&gt;C0(Model);</span><br></pre></td></tr></table></figure>
@@ -74,6 +57,23 @@ $$
 <figure class="highlight text"><table><tr><td class="code"><pre><span class="line">                     Data is the new oil</span><br><span class="line">通过这种发送模型的方式，增加了可以使用的数据的来源和数量，同时保护了用户的隐私。同时数据的增加和减少更有弹性。</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>AI</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>信息论的升维之路——多天线技术（一）</title>
+    <url>/2024/04/01/MIMO%E5%A4%9A%E7%BB%B4/</url>
+    <content><![CDATA[<p>多天线技术，准确地说应该称为多通道技术，就是只研究信道，而不是天线本身。但是既然要大范围应用，就应该理论和实际相结合，像Openai的大模型，设计出模型，做出面向公众的产品，然后惊艳世界。</p>
+<h2 id="MIMO信息论"><a href="#MIMO信息论" class="headerlink" title="MIMO信息论"></a>MIMO信息论</h2><h3 id="MIMO系统"><a href="#MIMO系统" class="headerlink" title="MIMO系统"></a>MIMO系统</h3><p>一个<strong>AWGN</strong>信道的信道模型为:</p>
+<p>$$<br>r&#x3D;s+n<br>$$</p>
+<p>其中，<strong>r</strong>是接收信号，<strong>s</strong>是发射信号，<strong>n</strong>是白噪声。</p>
+<p>信息论告诉我们它的容量为：<br>$$<br>C&#x3D;B \log_{2}({1+}\frac{\sigma_s^2}{\sigma_n^2})<br>$$<br>其中<strong>C</strong>是信道容量，<strong>B</strong>是带宽，分子是信号功率，分母是白噪声功率。拓展一下，增益为<strong>h</strong>的平坦衰落信道模型为：<br>$$<br>r&#x3D;hs+n<br>$$<br>把这个模型继续拓展为多输入多输出的形式：<br>$$<br>r&#x3D;Hs+n<br>$$<br>其中,<br>$$<br>r&#x3D;<br>    \left(\begin{matrix}<br>    r_1 \<br>    r_2 \<br>    r_3\<br>    \end{matrix}\right)<br>$$</p>
+<p>$$<br>H&#x3D;\left(\begin{matrix}<br>        h_{11}  &amp; \cdots &amp; h_{m1}\<br>        \vdots &amp; \ddots &amp; \vdots \<br>        h_{1n}  &amp; \cdots &amp; h_{mn}\<br>    \end{matrix}\right)<br>$$</p>
+<p><strong>s</strong>,<strong>h</strong>均为矢量。</p>
+<p>这个模型相当于<strong>m</strong>根发射天线,<strong>n</strong>跟接收天线组成的多天线系统。</p>
+<p>从一维拓展到高维，信道容量变为：<br>$$<br>C&#x3D;Blog_{2}det({I_n+HR_{ss}H^HR_{nn}^{-1})}<br>$$<br>行列式可以看成有向面积或体积，那么从粗略的概念上去理解，就是每个维度边长的乘积，取对数后转换为求和。也就是说，每个维度可看作一个信道，都有一定的信道容量，总的信道容量是每个维度信道容量的和。（未完待续…）</p>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3>]]></content>
+      <tags>
+        <tag>mimo</tag>
       </tags>
   </entry>
   <entry>
