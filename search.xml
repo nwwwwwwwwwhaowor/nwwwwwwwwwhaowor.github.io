@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>MIMO多天线技术——（四）</title>
-    <url>/2024/04/16/MIMO%E5%8A%9F%E7%8E%87%E5%88%86%E9%85%8D/</url>
-    <content><![CDATA[<h2 id="系统容量"><a href="#系统容量" class="headerlink" title="系统容量"></a>系统容量</h2><p>书接上回，我们讨论到MIMO系统等价于多个互不干扰的并行信道。得到系统容量为：<br>$$<br>C&#x3D;B\sum\limits_{i&#x3D;1}^{min(m,n)}\log_{2}{(1+\frac{\lambda_i^2\sigma_{s_i’}^2}{\sigma_{n}^2})}<br>$$<br>酋矩阵不引起信号和噪声功率的变化。，如果所有的信道分配到功率相等，则把$H&#x3D;U\sum V_H$ 直接带入MIMO容量公式：<br>$$<br>C&#x3D;B\log det(I_n+\frac{\sigma_s^2}{\sigma_n^2}HH_H)<br>$$<br>得到：<br>$$<br>C&#x3D;B\log det(I_n+\frac{\sigma_s^2}{\sigma_n^2}U\sum\sum^HU^H) \&#x3D;B\log det(U(I_n+\frac{\sigma_s^2}{\sigma_n^2}\sum\sum^H)U^H)\&#x3D;B\log (detUdet   (I_n+\frac{\sigma_s^2}{\sigma_n^2}\sum\sum^H)detU^H)\&#x3D;B\log (det   (I_n+\frac{\sigma_s^2}{\sigma_n^2}\sum\sum^H))\&#x3D;B\sum\limits_{i&#x3D;1}^{min(m,n)}\log_{2}(1+\frac{\lambda_i^2\sigma_{s}^2}{\sigma_n^2})<br>$$<br>也就是说，在等功率分配的情况下，两种MIMO信道容量的表达方式是相同的。MIMO系统可以等效为若干个互不干扰的并行信道，如果不限制每个信道的功率相等，可以获得更高的信道容量。并行信道可以根据注水原理进行最优功率分配，实现系统容量的最大化。在这里，注水定理改为：<br>$$<br>r_i’&#x2F;\lambda_i&#x3D;s_i’+n_i’&#x2F;\lambda_i,i&#x3D;1,2,…,min(n,m)<br>$$<br>去掉系数$\lambda_i$ 后信道就是AWGN了，可以直接用注水功率分配。注水功率分配的原则是每个AWGN信道上的累计功率相等，结果是$n_i’&#x2F;\lambda_i$ 越小的信道分配的功率越多。采用注水功率分配后的容量要大于上面提到的等功率分配的容量。:smiley:<br>$$<br>End<br>$$</p>
-]]></content>
-      <tags>
-        <tag>信息论</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>MIMO多天线技术——（三）</title>
     <url>/2024/04/08/MIMO%E4%BF%A1%E6%81%AF%E8%AE%BA2/</url>
     <content><![CDATA[<h2 id="补充知识"><a href="#补充知识" class="headerlink" title="补充知识"></a>补充知识</h2><p><em>注水定理</em></p>
@@ -19,6 +10,15 @@
 <p>$$<br>C&#x3D;log_ {2} {1+\frac{P_1+P_2}{N}}&#x3D;log_{2} ({1+\frac{P_1}{N}} )+log_{2} ({1+\frac{P_2}{P_1+N}} )&#x3D;C_1+C_2<br>$$<br>$C_1log_{2} ({1+\frac{P_1}{N}} )$ 可以理解为信号功率为$P_1$ ,噪声为$N$ 时的容量；$C_2 $ 可以理解为信号功率为$P_2$ ,噪声为$P_1+N $ 时的容量。</p>
 <p>也就是说，这两份功率，第一份功率产生了一个容量，同时等效成了对第二份功率的噪声。</p>
 <p>已经存在的功率，无论是噪声还是信号，对后来的信号来说都是噪声。因此没把这一小份功率分配到累计功率最小的信道上获得的容量最大。</p>
+]]></content>
+      <tags>
+        <tag>信息论</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MIMO多天线技术——（四）</title>
+    <url>/2024/04/16/MIMO%E5%8A%9F%E7%8E%87%E5%88%86%E9%85%8D/</url>
+    <content><![CDATA[<h2 id="系统容量"><a href="#系统容量" class="headerlink" title="系统容量"></a>系统容量</h2><p>书接上回，我们讨论到MIMO系统等价于多个互不干扰的并行信道。得到系统容量为：<br>$$<br>C&#x3D;B\sum\limits_{i&#x3D;1}^{min(m,n)}\log_{2}{(1+\frac{\lambda_i^2\sigma_{s_i’}^2}{\sigma_{n}^2})}<br>$$<br>酋矩阵不引起信号和噪声功率的变化。，如果所有的信道分配到功率相等，则把$H&#x3D;U\sum V_H$ 直接带入MIMO容量公式：<br>$$<br>C&#x3D;B\log det(I_n+\frac{\sigma_s^2}{\sigma_n^2}HH_H)<br>$$<br>得到：<br>$$<br>C&#x3D;B\log det(I_n+\frac{\sigma_s^2}{\sigma_n^2}U\sum\sum^HU^H) \&#x3D;B\log det(U(I_n+\frac{\sigma_s^2}{\sigma_n^2}\sum\sum^H)U^H)\&#x3D;B\log (detUdet   (I_n+\frac{\sigma_s^2}{\sigma_n^2}\sum\sum^H)detU^H)\&#x3D;B\log (det   (I_n+\frac{\sigma_s^2}{\sigma_n^2}\sum\sum^H))\&#x3D;B\sum\limits_{i&#x3D;1}^{min(m,n)}\log_{2}(1+\frac{\lambda_i^2\sigma_{s}^2}{\sigma_n^2})<br>$$<br>也就是说，在等功率分配的情况下，两种MIMO信道容量的表达方式是相同的。MIMO系统可以等效为若干个互不干扰的并行信道，如果不限制每个信道的功率相等，可以获得更高的信道容量。并行信道可以根据注水原理进行最优功率分配，实现系统容量的最大化。在这里，注水定理改为：<br>$$<br>r_i’&#x2F;\lambda_i&#x3D;s_i’+n_i’&#x2F;\lambda_i,i&#x3D;1,2,…,min(n,m)<br>$$<br>去掉系数$\lambda_i$ 后信道就是AWGN了，可以直接用注水功率分配。注水功率分配的原则是每个AWGN信道上的累计功率相等，结果是$n_i’&#x2F;\lambda_i$ 越小的信道分配的功率越多。采用注水功率分配后的容量要大于上面提到的等功率分配的容量。:smiley:<br>$$<br>End<br>$$</p>
 ]]></content>
       <tags>
         <tag>信息论</tag>
@@ -60,6 +60,22 @@ $$
       </tags>
   </entry>
   <entry>
+    <title>爬山问题</title>
+    <url>/2024/04/14/%E7%88%AC%E5%B1%B1%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h2 id="周五导学课小随笔"><a href="#周五导学课小随笔" class="headerlink" title="##周五导学课小随笔"></a>##周五导学课小随笔</h2><p><strong>贪心算法</strong></p>
+<p>贪心算法是一种基础的优化算法，但是容易陷入局部最优的问题，如果唐僧用贪婪算法爬五指山去救大圣，估计西游记的主角就会换成猪八戒了。（笑话很冷呢）</p>
+<p><strong>遗传算法</strong></p>
+<p>遗传算法是模拟染色体重组的一种算法，通过优胜劣汰来选择最优解。求解效果的差的组合会被排除，然后不断迭代。其中染色体还会依据一定概率变异再参与组合。这种算法可以避免局部最优的问题，因为种群中可能会有组合到达更高的山峰，防止在一个小山峰停滞不前。</p>
+<p><strong>模拟退火算法</strong></p>
+<p>很经典的算法，加温过程相当于对算法设定初值，等温过程对应算法的Metropolis抽样过程，冷却过程对应控制参数的下降。这里能量的变化就是目标函数，我们要得到的最优解就是能量最低态。</p>
+<p><strong>随机森林</strong></p>
+<p>随机森岭是一群决策器共同作用来找到最优的决策，但是准确的说，这是一种分类问题，不是最优化，虽然二者最终都可以解决优化问题。随机森林最终确定是决策范围，最优化算法是寻找确切的解。当然，随机森林由于可以使用多个决策器，防止了单一决策器使用贪心算法以至于局部最优的问题</p>
+]]></content>
+      <tags>
+        <tag>AI</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>信息论的升维之路——多天线技术（一）</title>
     <url>/2024/04/01/MIMO%E5%A4%9A%E7%BB%B4/</url>
     <content><![CDATA[<p>多天线技术，准确地说应该称为多通道技术，就是只研究信道，而不是天线本身。但是既然要大范围应用，就应该理论和实际相结合，像Openai的大模型，设计出模型，做出面向公众的产品，然后惊艳世界。</p>
@@ -74,22 +90,6 @@ $$
 <h3 id=""><a href="#" class="headerlink" title=""></a></h3>]]></content>
       <tags>
         <tag>mimo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>爬山问题</title>
-    <url>/2024/04/14/%E7%88%AC%E5%B1%B1%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<h2 id="周五导学课小随笔"><a href="#周五导学课小随笔" class="headerlink" title="##周五导学课小随笔"></a>##周五导学课小随笔</h2><p><strong>贪心算法</strong></p>
-<p>贪心算法是一种基础的优化算法，但是容易陷入局部最优的问题，如果唐僧用贪婪算法爬五指山去救大圣，估计西游记的主角就会换成猪八戒了。（笑话很冷呢）</p>
-<p><strong>遗传算法</strong></p>
-<p>遗传算法是模拟染色体重组的一种算法，通过优胜劣汰来选择最优解。求解效果的差的组合会被排除，然后不断迭代。其中染色体还会依据一定概率变异再参与组合。这种算法可以避免局部最优的问题，因为种群中可能会有组合到达更高的山峰，防止在一个小山峰停滞不前。</p>
-<p><strong>模拟退火算法</strong></p>
-<p>很经典的算法，加温过程相当于对算法设定初值，等温过程对应算法的Metropolis抽样过程，冷却过程对应控制参数的下降。这里能量的变化就是目标函数，我们要得到的最优解就是能量最低态。</p>
-<p><strong>随机森林</strong></p>
-<p>随机森岭是一群决策器共同作用来找到最优的决策，但是准确的说，这是一种分类问题，不是最优化，虽然二者最终都可以解决优化问题。随机森林最终确定是决策范围，最优化算法是寻找确切的解。当然，随机森林由于可以使用多个决策器，防止了单一决策器使用贪心算法以至于局部最优的问题</p>
-]]></content>
-      <tags>
-        <tag>AI</tag>
       </tags>
   </entry>
 </search>
